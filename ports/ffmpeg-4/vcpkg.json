@@ -1,5 +1,5 @@
 {
-  "name": "ffmpeg",
+  "name": "ffmpeg-4",
   "version": "4.4.1",
   "port-version": 22,
   "description": [
@@ -31,7 +31,7 @@
       "description": "Build with all allowed dependencies selected that are compatible with the lgpl license",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec",
@@ -60,7 +60,7 @@
           ]
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "alsa"
@@ -68,7 +68,7 @@
           "platform": "linux"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "sdl2"
@@ -76,7 +76,7 @@
           "platform": "!osx"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "ass"
@@ -84,7 +84,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "fontconfig"
@@ -92,7 +92,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "fribidi"
@@ -100,7 +100,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "modplug"
@@ -108,7 +108,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "opencl"
@@ -116,7 +116,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "openh264"
@@ -124,7 +124,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "srt"
@@ -132,7 +132,7 @@
           "platform": "!uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "ilbc"
@@ -140,7 +140,7 @@
           "platform": "!(arm & uwp)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "ssh"
@@ -148,7 +148,7 @@
           "platform": "!(uwp | arm)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "tensorflow"
@@ -156,7 +156,7 @@
           "platform": "x64 & !static & !uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "aom"
@@ -164,7 +164,7 @@
           "platform": "!(windows & arm & !uwp)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "dav1d"
@@ -172,7 +172,7 @@
           "platform": "!(uwp | arm | x86 | osx)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "opengl"
@@ -180,7 +180,7 @@
           "platform": "!uwp & !(arm64 & windows)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "tesseract"
@@ -188,7 +188,7 @@
           "platform": "!(windows & arm) & !static & !uwp"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "nvcodec"
@@ -201,7 +201,7 @@
       "description": "Build with all allowed dependencies selected that are compatible with the gpl license",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "all",
@@ -210,7 +210,7 @@
           ]
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "x265"
@@ -218,7 +218,7 @@
           "platform": "!(uwp | arm)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "x264"
@@ -226,7 +226,7 @@
           "platform": "!(arm & windows)"
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avisynthplus"
@@ -239,7 +239,7 @@
       "description": "Build with all allowed dependencies selected with a non-redistributable license",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "all-gpl",
@@ -275,7 +275,7 @@
       "description": "Build the avdevice library",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec",
@@ -291,7 +291,7 @@
       "description": "Build the avformat library",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec"
@@ -305,7 +305,7 @@
       "dependencies": [
         "avisynthplus",
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "gpl"
@@ -340,7 +340,7 @@
           ]
         },
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "nonfree"
@@ -348,12 +348,12 @@
         }
       ]
     },
-    "ffmpeg": {
+    "ffmpeg-4": {
       "description": "Build the ffmpeg application",
       "supports": "!uwp",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec",
@@ -368,7 +368,7 @@
       "supports": "!uwp",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec",
@@ -386,7 +386,7 @@
       "supports": "!uwp",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "avcodec",
@@ -487,7 +487,7 @@
       "description": "Needed for https support if gnutls, libtls or mbedtls is not used",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "nonfree"
@@ -506,7 +506,7 @@
       "description": "Build the postproc library",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "gpl"
@@ -541,7 +541,7 @@
       "description": "Include libsoxr resampling",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "swresample"
@@ -620,7 +620,7 @@
       "description": "H.264 encoding via x264",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "gpl"
@@ -633,7 +633,7 @@
       "description": "HEVC encoding via x265",
       "dependencies": [
         {
-          "name": "ffmpeg",
+          "name": "ffmpeg-4",
           "default-features": false,
           "features": [
             "gpl"
