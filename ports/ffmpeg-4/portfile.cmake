@@ -65,13 +65,6 @@ if(VCPKG_TARGET_ARCHITECTURE STREQUAL "x86" OR VCPKG_TARGET_ARCHITECTURE STREQUA
   set(OPTIONS "${OPTIONS} --enable-asm --enable-x86asm")
 endif()
 
-if(VCPKG_TARGET_IS_WINDOWS)
-    vcpkg_acquire_msys(MSYS_ROOT)
-    set(SHELL "${MSYS_ROOT}/usr/bin/bash.exe")
-else()
-    set(SHELL /bin/sh)
-endif()
-
 if(VCPKG_TARGET_IS_MINGW)
     if(VCPKG_TARGET_ARCHITECTURE STREQUAL "x86")
         string(APPEND OPTIONS " --target-os=mingw32")
@@ -105,6 +98,102 @@ string(APPEND VCPKG_COMBINED_C_FLAGS_DEBUG " -I \"${CURRENT_INSTALLED_DIR}/inclu
 string(APPEND VCPKG_COMBINED_C_FLAGS_RELEASE " -I \"${CURRENT_INSTALLED_DIR}/include\"")
 
 set(_csc_PROJECT_PATH ffmpeg)
+
+## Setup vcpkg toolchain
+
+set(prog_env "")
+
+if(VCPKG_DETECTED_CMAKE_C_COMPILER)
+    get_filename_component(CC_path "${VCPKG_DETECTED_CMAKE_C_COMPILER}" DIRECTORY)
+    get_filename_component(CC_filename "${VCPKG_DETECTED_CMAKE_C_COMPILER}" NAME)
+    set(ENV{CC} "${CC_filename}")
+    string(APPEND OPTIONS " --cc=${CC_filename}")
+    string(APPEND OPTIONS " --host_cc=${CC_filename}")
+    list(APPEND prog_env "${CC_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_CXX_COMPILER)
+    get_filename_component(CXX_path "${VCPKG_DETECTED_CMAKE_CXX_COMPILER}" DIRECTORY)
+    get_filename_component(CXX_filename "${VCPKG_DETECTED_CMAKE_CXX_COMPILER}" NAME)
+    set(ENV{CXX} "${CXX_filename}")
+    string(APPEND OPTIONS " --cxx=${CXX_filename}")
+    #string(APPEND OPTIONS " --host_cxx=${CC_filename}")
+    list(APPEND prog_env "${CXX_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_RC_COMPILER)
+    get_filename_component(RC_path "${VCPKG_DETECTED_CMAKE_RC_COMPILER}" DIRECTORY)
+    get_filename_component(RC_filename "${VCPKG_DETECTED_CMAKE_RC_COMPILER}" NAME)
+    set(ENV{WINDRES} "${RC_filename}")
+    string(APPEND OPTIONS " --windres=${RC_filename}")
+    list(APPEND prog_env "${RC_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_LINKER AND VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)
+    get_filename_component(LD_path "${VCPKG_DETECTED_CMAKE_LINKER}" DIRECTORY)
+    get_filename_component(LD_filename "${VCPKG_DETECTED_CMAKE_LINKER}" NAME)
+    set(ENV{LD} "${LD_filename}")
+    string(APPEND OPTIONS " --ld=${LD_filename}")
+    #string(APPEND OPTIONS " --host_ld=${LD_filename}")
+    list(APPEND prog_env "${LD_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_NM)
+    get_filename_component(NM_path "${VCPKG_DETECTED_CMAKE_NM}" DIRECTORY)
+    get_filename_component(NM_filename "${VCPKG_DETECTED_CMAKE_NM}" NAME)
+    set(ENV{NM} "${NM_filename}")
+    string(APPEND OPTIONS " --nm=${NM_filename}")
+    list(APPEND prog_env "${NM_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_AR)
+    get_filename_component(AR_path "${VCPKG_DETECTED_CMAKE_AR}" DIRECTORY)
+    get_filename_component(AR_filename "${VCPKG_DETECTED_CMAKE_AR}" NAME)
+    if(AR_filename MATCHES [[^(llvm-)?lib\.exe$]])
+        set(ENV{AR} "ar-lib ${AR_filename}")
+        string(APPEND OPTIONS " --ar='ar-lib ${AR_filename}'")
+    else()
+        set(ENV{AR} "${AR_filename}")
+        string(APPEND OPTIONS " --ar='${AR_filename}'")
+    endif()
+    list(APPEND prog_env "${AR_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_RANLIB)
+    get_filename_component(RANLIB_path "${VCPKG_DETECTED_CMAKE_RANLIB}" DIRECTORY)
+    get_filename_component(RANLIB_filename "${VCPKG_DETECTED_CMAKE_RANLIB}" NAME)
+    set(ENV{RANLIB} "${RANLIB_filename}")
+    string(APPEND OPTIONS " --ranlib=${RANLIB_filename}")
+    list(APPEND prog_env "${RANLIB_path}")
+endif()
+
+if(VCPKG_DETECTED_CMAKE_STRIP)
+    get_filename_component(STRIP_path "${VCPKG_DETECTED_CMAKE_STRIP}" DIRECTORY)
+    get_filename_component(STRIP_filename "${VCPKG_DETECTED_CMAKE_STRIP}" NAME)
+    set(ENV{STRIP} "${STRIP_filename}")
+    string(APPEND OPTIONS " --strip=${STRIP_filename}")
+    list(APPEND prog_env "${STRIP_path}")
+endif()
+
+if(VCPKG_HOST_IS_WINDOWS)
+    vcpkg_acquire_msys(MSYS_ROOT PACKAGES automake)
+    set(SHELL "${MSYS_ROOT}/usr/bin/bash.exe")
+    vcpkg_execute_required_process(
+        COMMAND "${SHELL}" -c "'/usr/bin/automake' --print-lib"
+        OUTPUT_VARIABLE automake_lib
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        WORKING_DIRECTORY "${MSYS_ROOT}"
+        LOGNAME automake-print-lib
+    )
+    list(APPEND prog_env "${MSYS_ROOT}/usr/bin" "${MSYS_ROOT}${automake_lib}")
+else()
+    find_program(SHELL bash)
+endif()
+
+list(REMOVE_DUPLICATES prog_env)
+vcpkg_add_to_path(PREPEND ${prog_env})
+
+# More? OBJCC BIN2C
 
 file(REMOVE_RECURSE ${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg ${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel)
 
