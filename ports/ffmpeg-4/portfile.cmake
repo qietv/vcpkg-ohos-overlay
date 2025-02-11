@@ -4,19 +4,17 @@ endif()
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO ffmpeg/ffmpeg
-    REF n4.4.1
-    SHA512 a53e617937f9892c5cfddb00896be9ad8a3e398dc7cf3b6c893b52ff38aff6ff0cbc61a44cd5f93d9a28f775e71ae82996a5e2b699a769c1de8f882aab34c797
+    REF n4.4.5
+    SHA512 09338A10B31F0E551735B9AA57E2C22CEAE15BBBCA1EE04535587FF55F181E187A77EDE4E70D8CD0E1E7C85FB27A7E513C93B91848013E997263D58780B8FA49
     HEAD_REF master
     PATCHES
         0001-create-lib-libraries.patch
         0003-fix-windowsinclude.patch
         0004-fix-debug-build.patch
-        0006-fix-StaticFeatures.patch
         0007-fix-lib-naming.patch
         0009-Fix-fdk-detection.patch
         0010-Fix-x264-detection.patch
         0011-Fix-x265-detection.patch
-        0012-Fix-ssl-110-detection.patch
         0013-define-WINVER.patch
         0014-avfilter-dependency-fix.patch  # https://ffmpeg.org/pipermail/ffmpeg-devel/2021-February/275819.html
         0015-Fix-xml2-detection.patch
@@ -25,7 +23,6 @@ vcpkg_from_github(
         0018-libaom-Dont-use-aom_codec_av1_dx_algo.patch
         0019-libx264-Do-not-explicitly-set-X264_API_IMPORTS.patch
         0020-fix-aarch64-libswscale.patch
-        0021-fix-sdl2-version-check.patch
 )
 
 if (SOURCE_PATH MATCHES " ")
