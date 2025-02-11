@@ -5,7 +5,9 @@ The vcpkg overlay ports and triplets for OpenHarmony Native SDK.
 ## Support overlay triplets
 
 - arm64-ohos
+- arm64-ohos-static
 - x64-ohos
+- x64-ohos-static
 
 ## Support overlay ports
 
