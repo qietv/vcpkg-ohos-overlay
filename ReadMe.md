@@ -12,6 +12,7 @@ The vcpkg overlay ports and triplets for OpenHarmony Native SDK.
 ## Support overlay ports
 
 - ffmpeg-4 FFmpeg 4.4 series
+- ffmpeg-4 FFmpeg 6.1 series
 
 ## Usage
 
