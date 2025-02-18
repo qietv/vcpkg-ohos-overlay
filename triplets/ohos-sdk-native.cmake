@@ -1,7 +1,7 @@
 ﻿## 
 ## PROJECT:   The vcpkg overlay ports and triplets for OpenHarmony Native SDK
 ## FILE:      ohos-sdk-native.cmake
-## PURPOSE:   The OpenHarmony Native SDK CMake toolchain redirection script.
+## PURPOSE:   The OpenHarmony Native SDK CMake toolchain redirection script
 ## 
 ## LICENSE:   The MIT License
 ## 
