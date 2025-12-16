@@ -1,9 +1,9 @@
 ﻿## 
-## PROJECT:   The vcpkg overlay ports and triplets for OpenHarmony Native SDK
-## FILE:      arm64-ohos-static.cmake
-## PURPOSE:   The vcpkg overlay triplet for ARM64 OpenHarmony Native SDK.
+## PROJECT:    The vcpkg overlay ports and triplets for OpenHarmony Native SDK
+## FILE:       arm64-ohos-static.cmake
+## PURPOSE:    The vcpkg overlay triplet for ARM64 OpenHarmony Native SDK.
 ## 
-## LICENSE:   The MIT License
+## LICENSE:    The MIT License
 ## 
 ## MAINTAINER: MouriNaruto (Kenji.Mouri@outlook.com)
 ## 
